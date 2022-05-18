@@ -1,0 +1,212 @@
+%git clone https://github.com/liantze/AltaCV.git CV
+%http://mirrors.ibiblio.org/CTAN/fonts/fontawesome/doc/fontawesome.pdf
+%pdflatex -> biber -> pdflatex -> pdflatex
+\documentclass[10pt,a4paper,ragged2e,withhyper]{AltaCV/altacv}
+% We need the EN variable here, but we defined it in the cv_en.tex/cv_hu.tex files.
+\newcommand{\huen}[2]{\ifEN#2\else#1\fi}
+\ifEN
+\else
+%Magyar nyelvi támogatás (Babel 3.7 vagy későbbi kell!)
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}
+\usepackage{t1enc}% ékezetes szavak automatikus elválasztásához
+\fi
+
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+\usepackage{paracol}
+\ifxetexorluatex
+% If using xelatex or lualatex:
+\setmainfont{Roboto Slab}
+\setsansfont{Lato}
+\renewcommand{\familydefault}{\sfdefault}
+\else
+% If using pdflatex:
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+% \usepackage{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+\fi
+% Change the colours if you want to
+\definecolor{szajam}{HTML}{764d41}
+\definecolor{SlateGrey}{HTML}{191611}
+\definecolor{LightGrey}{HTML}{b78270}
+\definecolor{DarkPastelRed}{HTML}{253344}%Nagy cimek
+\definecolor{PastelRed}{HTML}{191919}%egyetemek diagram nyelvkorok idezet
+\definecolor{GoldenEarth}{HTML}{895d43}%vonalak
+\colorlet{name}{szajam}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+\NewInfoField{locationandmailaddress}{\faMapMarker/\faEnvelope}
+\NewInfoField{birthday}{\faHeartbeat}
+\NewInfoField{languag}{\faLanguage}
+\hypersetup{hidelinks}
+\begin{document}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\name{dr. Molnár József}
+	\tagline{\faBalanceScale Jogász}
+	\photoL{3.5cm}{1}	
+	\personalinfo{%
+		\birthday{1961. 02. 23.}
+		\locationandmailaddress{1123 Budapest, Ráth György utca 1/B 3/2}
+		\email{molnar.jozsef.61.email@gmail.com}
+		\phone{+36 30 211 5288}
+		\github{molnar-jozsef-61/cv}
+	}
+	\makecvheader
+	%\AtBeginEnvironment{itemize}{\small}
+	\medskip
+	\medskip				
+	\columnratio{0.6}
+	\begin{paracol}{2}
+		\cvsection{\huen{szakmai tapasztalat}{professional experience}}
+		\cvevent{Osztályvezető}{BKM Nonprofit Zrt.\\
+			(Compliance Szabályozás és Folyamatmenedzsment Osztály)}{2021. 09. 01. -- 2022. 02. 09.}{XI. kerület}
+		\textbf{A Társaság "compliance és folyamatmenedzsment" osztályának irányítása:}
+		\begin{itemize}[leftmargin=.25in]
+			\item  A compliance szempontú megfelelőség biztosítása a szabályozások elkészítésével és kiadásával.
+			\item A szabályozók jogi kodifikációjának elvégzése és a szabályozások deregulációja.
+			\item A folyamatok optimális kialakításának koordinálása -- a folyamatgazdák bevonásával.
+			\item A folyamatgazdák oktatása és a folyamatgazda felelősi rendszer működtetése.
+		\end{itemize}\\
+		\divider
+		\cvevent{Compliance szakreferens}{Főtáv Zrt.\\
+			 (Compliace Minőségirányítási és Folyamatmenedzsment Osztály)}{2020. 04. 01. -- 2021. 09. 01.}{XI. kerület}		
+		\begin{itemize}[leftmargin=.25in]
+			\item  A fentieken túl, (a Főtáv Zrt, a BKM jogelődje 2021.09.01-i létrejöttéig) a vállalat üzletmenet-folytonossági (BCP) rendszerének irányítása.
+			\item A vonatkozó szabályrendszer felülvizsgálatának és aktualizálásának koordinálása.
+		\end{itemize}\\		
+		\divider
+		\cvevent{Biztonságszervező és jogi előadó}{Főtáv Zrt. (Biztonságvédelmi Főosztály)}{2015. 02. 01. -- 2020. 04. 01.}{XI. kerület}
+		\begin{itemize}[leftmargin=.25in]
+			\item A biztonságvédelem szabályozása a biztonságpolitika/stratégia alapján.
+			\item A Társaság vezetőinek biztonságvédelmi feladatainak ellátásának segítése.
+			\item A Társaság szerződéseinek munka-, tűz-, információ- ipar és titokvédelmi szempontú véleményezése.
+			\item A hatóságokkal való kapcsolattartás biztonságvédelmi ügyekben.
+		\end{itemize}\\
+		\medskip		
+		\cvsection{\huen{Oktatás és képzés}{Education}}
+		\cvevent{Jogász-közigazgatási szakvizsga}{JPTE-ÁJK}{1996 -- 2000}{Pécs}
+		\divider			
+		\switchcolumn
+		\cvsection{\huen{Életfilozófiám}{My Life Philosophy}}
+		
+		\begin{quote}
+			``A legkönnyebben akkor szerezhetünk igazságot magunknak,\\
+			 ha magunk is igazságot szolgáltatunk másoknak.''
+		\end{quote}
+		
+		\cvsection{\huen{{\Large Amikre büszke vagyok}}{Most Proud of}}
+		
+		\cvachievement{\faTrophy}{Az év oktatója 2X}{2002 / 2003}
+		\divider\\
+		\cvachievement{\faGraduationCap}{Jogi diploma}{Cum laude \href{https://github.com/molnar-jozsef-61/cv/blob/main/degree_certificate_hu.jpg}{\faFileImage}}\\
+		\medskip
+		\cvsection{\huen{{\Large hobbi és érdeklődés}}{{\Large hobbies and interests}}}
+		\wheelchart{1cm}{0.2cm}{%
+			1/10em/accent!70/{Fegyvergyűjtés},
+			3/8em/accent!40/{Barkácsolás},
+			4/8em/accent!60/{Kertészkedés},
+			1/8em/accent!30/{Kirándulás},
+			4/8em/accent/{Olvasás},
+			2/6em/accent!10/{Főzés}
+		}
+		\cvsection{\huen{kompetenciák}{competences}}
+		\cvtag{MS Office}
+		\cvtag{Windows}
+		\cvtag{Fényképezés}\\
+		\divider\smallskip\\
+		\huen{
+			\cvtag{Jó kommunikációs készség}			\cvtag{Tanulékonyság}
+			\cvtag{Pontosság}
+			\cvtag{Csapatjátékos}
+			\cvtag{Rugalmasság}
+			\cvtag{Terhelhetőség}
+			\cvtag{Motivált}\\
+			\cvtag{Önálló munkára való képesség}}{%
+			\cvtag{Good communication skills}
+			\cvtag{Teachable}
+			\cvtag{Punctual}
+			\cvtag{Team player}
+			\cvtag{Flexible}\\
+			\cvtag{Motivated}
+			\cvtag{Autonomous}
+		}
+		\\
+		\divider\smallskip\\
+		\cvtag{Büntetőjogi ismeretek}\\
+		\cvtag{Oktatói gyakorlatok}\\
+		\cvsection{\huen{Nyelvek}{Languages}}
+		\cvskill{Francia \\(B2 / katonai-rendészeti szakmai nyelvvel bővített) \href{https://github.com/molnar-jozsef-61/cv/blob/main/language_certificate.jpg}{\faFileImage}}{3}
+		\divider
+		\medskip		
+	\end{paracol}
+		\medskip		
+		\medskip
+	\begin{paracol}{1}
+		\cvsection{\huen{korábbi szakmai tapasztalat}{previous professional experience}}
+		\cvevent{Megbízási szerződéses jogász}{Hegyvidéki Önkormányzat}{2011. 03. 16. -- 2013. 08. 30.}{XII. kerület}
+		Közterület-használatokkal kapcsolatos ügyintézés, hátralék kezelés.\\
+		\divider
+		\cvevent{Jogász}{CompArt Stúdió Kft.}{2009. 01. 01. -- 2019. 06. 30.}{Budapest}
+		Térinformatikai és közmű nyilvántartási rendszerek tervezése önkörmányzatoknak.\\
+		\divider
+		\cvevent{Köztisztviselő-Vezető főtanácsos, jogász, hatósági osztályvezető}{Esztergom Város Önkormányzatának Polgármesteri Hivatala (Hatósági Osztály)}{2005. 01. 01. -- 2009. 08. 31.}{Esztergom}
+		\begin{itemize}[leftmargin=.25in]
+			\item Az önkormányzat rendeleteinek megalkotása.
+			\item Az okmányiroda, a közigazgatás, az építéshatósági iroda és a közterületfelügyelet vezetése (40-44 fő).
+		\end{itemize}\\
+		\divider
+		\cvevent{Oktató-tanársegéd}{Zrínyi Miklós Nemzetvédelmi Egyetem (Határőr Tanszék)}{1995. 05. 01. -- 2004. 12. 30.}{Szentendre/Budapest}
+		\begin{itemize}[leftmargin=.25in]
+			\item Új tantárgyprogramok kidolgozása (büntetőjog, büntető-eljárás jog, kriminológia, bevezetés az
+			állam és jogtudományi ismeretekbe, jogtörténelem) valamint óraadás.
+			\item A bűnügyi-felderítő szakcsoport vezetője 2000-től.
+			\item A Közterületfelügyelet létrehozásának elősegítése a II. kerületi Önkormányzatnál a 2002-2003-as években.
+			\item A közterületfelügyelők kiválasztása, és oktatása (sikeresen vizsgázott az összes tanítványom).
+			\item A felügyelet működését elősegítő módszertani segédanyagok kidolgozása, és a szabálysértési rendeletek megalkotása.
+			\item A bűnügyi ügyek feldolgozásában való közreműködés, Esztergom Város Önkormányzatánál, külső szakértőként.
+		\end{itemize}\\
+		\divider
+		\cvevent{Főosztályvezető-helyettes, határőr őrnagy}{Határőrség Országos Parancsnokság (Fegyelmi Főosztálya)}{1993. 05. 01. -- 1995. 05. 01.}{Budapest}
+		\begin{itemize}[leftmargin=.25in]
+			\item Fegyelmi vizsgálat, és eljárás lefolytatása a Határőrség személyi állományába tartozó különböző rendfokozatú, beosztású és munkakörben tevékenykedő személlyel szemben. 
+			\item A Határőrség fegyelmi helyzetét érintő ellenőrzések, elemzések végzése.
+			\item A Határőrségre vonatkozó, a fegyelmi helyzetet érintő vagy azt befolyásoló, jogi és egyéb szakanyagok
+			véleményezése.
+		\end{itemize}\\
+		\divider
+		\cvevent{Rendőr alhadnagy, nyomozó, csoportvezető-rendőr alhadnagy}{BRFK. (Életvédelmi és Rablási Alosztálya)}{1984. 03. 16. -- 1993. 05. 01.}{Budapest}
+		\begin{itemize}[leftmargin=.25in]
+			\item Az egység fő profilja az erőszakos bűncselekmények nyomozása volt, különös tekintettel az emberölés,
+			rablás, erőszakos közösülés, zsarolás bűnelkövetésekre.
+			\item Rendőr nyomozóként elmélyült ismeretek megszerzése, mind a nyílt, mind az operatív szakterületeken. 
+			\item 1993-ban százados, kiemelt főnyomozó és csoportvezető helyettes beosztás elérése.
+			\item Nyomozásvezetői feladatok ellátása a	pénzintézetek illetve benzintöltő állomások kárára és az ott dolgozók sérelmére elkövetett fegyveres,vagy felfegyverezve elkövetett rablások nyomozása során.
+		\end{itemize}\\
+		\divider
+		\cvevent{Rendőr hadnagy-bűnügyi szervező}{Rendőrtiszti Főiskola (Bűnügyi Szak)}{1984. 09. 01. -- 1989. 06. 01.}{Budapest}
+		Gyilkossági nyomozó, főnyomozó, kiemelt főnyomozó, és csoportvezető helyettesi tevékenységekkel összefüggő feladatok.\\
+		\divider		
+		\cvevent{Rendőr alhadnagy}{BM Tartalékos Tisztképző Iskola (Rendőr Szak)}{1981. 09. 01. -- 1983. 06. 01.}{Kerepestarcsa}
+		Beosztott nyomozói tevékenység.\\
+		\divider		
+	\end{paracol}		
+\end{document}
+
+ 
